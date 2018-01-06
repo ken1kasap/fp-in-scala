@@ -5,9 +5,9 @@ import org.scalatest.{ FlatSpec, Matchers }
 
 class ListSpec extends FlatSpec with Matchers {
 
+  // Exercise 3.1
   behavior of "pattern match for Cons"
 
-  // Exercise 3.1
   it should "return 3" in {
     val x = List(1, 2, 3, 4, 5) match {
       case Cons(x, Cons(2, Cons(4, _)))          => x
