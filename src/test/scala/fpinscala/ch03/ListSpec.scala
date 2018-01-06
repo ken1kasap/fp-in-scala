@@ -19,4 +19,15 @@ class ListSpec extends FlatSpec with Matchers {
 
     x should be(3)
   }
+
+  // Exercise 3.2
+  behavior of "tail"
+
+  it should "return list removed head in the list" in {
+    val xs       = List("a", "b", "c", "d", "e")
+    val expected = List("b", "c", "d", "e")
+    val result   = tail(xs)
+
+    result should equal(expected)
+  }
 }
