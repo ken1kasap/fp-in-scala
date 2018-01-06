@@ -1,0 +1,22 @@
+package fpinscala.ch03
+
+import List._
+import org.scalatest.{ FlatSpec, Matchers }
+
+class ListSpec extends FlatSpec with Matchers {
+
+  behavior of "pattern match for Cons"
+
+  // Exercise 3.1
+  it should "return 3" in {
+    val x = List(1, 2, 3, 4, 5) match {
+      case Cons(x, Cons(2, Cons(4, _)))          => x
+      case Nil                                   => 42
+      case Cons(x, Cons(y, Cons(3, Cons(4, _)))) => x + y // match this case
+      case Cons(h, t)                            => h + sum(t)
+      case _                                     => 101
+    }
+
+    x should be(3)
+  }
+}
