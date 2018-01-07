@@ -30,4 +30,17 @@ class ListSpec extends FlatSpec with Matchers {
 
     result should equal(expected)
   }
+
+  // Exercise 3.3
+  behavior of "setHead"
+
+  it should "replace head element of given list" in {
+    val xs       = List("a", "b", "c", "d", "e")
+    val input    = "x"
+    val expected = List("x", "b", "c", "d", "e")
+
+    val result = setHead(input, xs)
+
+    result should equal(expected)
+  }
 }
