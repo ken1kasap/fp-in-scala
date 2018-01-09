@@ -43,4 +43,17 @@ class ListSpec extends FlatSpec with Matchers {
 
     result should equal(expected)
   }
+
+  // Exercise 3.4
+  behavior of "drop"
+
+  it should "remove n elements from head of given list" in {
+    val xs       = List("a", "b", "c", "d", "e")
+    val n        = 3
+    val expected = List("d", "e")
+
+    val result = drop(xs, n)
+
+    result should equal(expected)
+  }
 }
