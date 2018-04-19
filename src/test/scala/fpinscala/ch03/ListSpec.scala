@@ -56,4 +56,22 @@ class ListSpec extends FlatSpec with Matchers {
 
     result should equal(expected)
   }
+
+  // Exercise 3.5
+  behavior of "dropWhile"
+
+  it should "return new list that matched elements were dropped." in {
+    val xs       = List("a", "a", "a", "d", "e")
+    val expected = List("d", "e")
+    val result   = dropWhile(xs, (x: String) => x == "a")
+
+    result should equal(expected)
+  }
+
+  it should "return the input list if none of character matches." in {
+    val xs     = List("a", "b", "c", "d", "e")
+    val result = dropWhile(xs, (x: String) => x == "x")
+
+    result should equal(xs)
+  }
 }

@@ -46,4 +46,11 @@ object List {
         case _   => drop(tail(l), n - 1)
       }
 
+  // Exercise 3.5
+  @tailrec
+  def dropWhile[A](xs: List[A], f: A => Boolean): List[A] =
+    xs match {
+      case Cons(head, tail) if f(head) => dropWhile(tail, f)
+      case _                           => xs
+    }
 }
