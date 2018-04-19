@@ -53,4 +53,12 @@ object List {
       case Cons(head, tail) if f(head) => dropWhile(tail, f)
       case _                           => xs
     }
+
+  // Exercise 3.6
+  def init[A](xs: List[A]): List[A] =
+    xs match {
+      case Nil              => Nil
+      case Cons(_, Nil)     => Nil
+      case Cons(head, tail) => Cons(head, init(tail))
+    }
 }

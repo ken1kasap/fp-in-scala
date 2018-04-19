@@ -74,4 +74,15 @@ class ListSpec extends FlatSpec with Matchers {
 
     result should equal(xs)
   }
+
+  // Exercise 3.6
+  behavior of "init"
+
+  it should "return the list that was deleted last element." in {
+    val xs       = List(1, 2, 3, 4, 5)
+    val expected = List(1, 2, 3, 4)
+    val result   = init(xs)
+
+    result should equal(expected)
+  }
 }
