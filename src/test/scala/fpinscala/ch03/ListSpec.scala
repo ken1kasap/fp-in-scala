@@ -85,4 +85,23 @@ class ListSpec extends FlatSpec with Matchers {
 
     result should equal(expected)
   }
+
+  // Exercise 3.9
+  behavior of "length"
+
+  it should "return the length of the list." in {
+    val xs       = List(1, 2, 3, 4, 5)
+    val expected = 5
+    val result   = List.length(xs)
+
+    result should equal(expected)
+  }
+
+  it should "return 0 when the list is empty." in {
+    val xs       = List()
+    val expected = 0
+    val result   = List.length(xs)
+
+    result should equal(expected)
+  }
 }
