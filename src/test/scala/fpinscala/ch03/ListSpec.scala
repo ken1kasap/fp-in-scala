@@ -115,4 +115,38 @@ class ListSpec extends FlatSpec with Matchers {
 
     result should equal(expected)
   }
+
+  // Exercise 3.11
+  behavior of "sum3"
+
+  it should "return total value of the list." in {
+    val xs       = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    val expected = 55
+
+    val result = sum3(xs)
+
+    result should equal(expected)
+  }
+
+  behavior of "product3"
+
+  it should "return multiplied value of the list." in {
+    val xs       = List(1.0, 2.0, 3.0, 4.0, 5.0)
+    val expected = 120.0
+
+    val result = product3(xs)
+
+    result should equal(expected)
+  }
+
+  behavior of "length2"
+
+  it should "return the length of the list." in {
+    val xs       = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+    val expected = 11
+
+    val result = length2(xs)
+
+    result should equal(expected)
+  }
 }
