@@ -74,4 +74,12 @@ object List {
 
   // Exercise 3.9
   def length[A](as: List[A]): Int = foldRight(as, 0)((_, a) => a + 1)
+
+  // Exercise 3.10
+  @tailrec
+  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B =
+    as match {
+      case Nil              => z
+      case Cons(head, tail) => foldLeft(tail, f(z, head))(f)
+    }
 }

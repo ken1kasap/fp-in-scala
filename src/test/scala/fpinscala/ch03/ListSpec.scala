@@ -104,4 +104,15 @@ class ListSpec extends FlatSpec with Matchers {
 
     result should equal(expected)
   }
+
+  // Exercise 3.10
+  behavior of "foldLeft"
+
+  it should "concat String from the head of the list." in {
+    val xs       = List("f", "o", "l", "d", "L", "e", "f", "t")
+    val expected = "foldLeft"
+    val result   = foldLeft(xs, "")(_ + _)
+
+    result should equal(expected)
+  }
 }
