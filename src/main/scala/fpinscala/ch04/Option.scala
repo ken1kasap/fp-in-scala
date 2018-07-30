@@ -25,6 +25,14 @@ sealed trait Option[+A] {
   }
 
   def lift[A, B](f: A => B): Option[A] => Option[B] = _ map f
+
+  // Exercise 4.3
+  def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] =
+    for {
+      x <- a
+      y <- b
+    } yield f(x, y)
+
 }
 
 case class Some[+A](get: A) extends Option[A]
