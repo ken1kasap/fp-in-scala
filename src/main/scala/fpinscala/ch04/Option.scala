@@ -50,4 +50,25 @@ object Option {
       y <- b
     } yield f(x, y)
 
+  // Exercise 4.4
+  // List(Some(1), Some(2), Some(3)) => Some(List(1, 2, 3))
+  // List(Some(1), None, Some(3)) => None
+  def sequence[A](a: List[Option[A]]): Option[List[A]] = a match {
+    case Nil => Some(Nil)
+    case head :: tail =>
+      head flatMap { x =>
+        sequence(tail) map { t =>
+          x :: t
+        }
+      }
+  }
+
+  def sequence2[A](a: List[Option[A]]): Option[List[A]] = a match {
+    case Nil => Some(Nil)
+    case head :: tail =>
+      for {
+        x <- head
+        y <- sequence(tail)
+      } yield x :: y
+  }
 }
