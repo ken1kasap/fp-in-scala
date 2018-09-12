@@ -72,6 +72,8 @@ object Option {
       } yield x :: y
   }
 
+  def sequenceByTraverse[A](as: List[Option[A]]): Option[List[A]] = traverse(as)(a => a)
+
   // Exercise 4.5
   def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] = a match {
     case Nil          => Some(Nil)
