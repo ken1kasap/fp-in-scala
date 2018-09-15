@@ -5,6 +5,13 @@ trait Stream[+A] {
     case Empty      => None
     case Cons(h, _) => Some(h())
   }
+
+  // Exercise 5.1
+  // Need improvement. Should implement tail recursive.
+  def toList: List[A] = this match {
+    case Empty      => Nil
+    case Cons(h, t) => h() :: t().toList
+  }
 }
 
 case object Empty extends Stream[Nothing]
