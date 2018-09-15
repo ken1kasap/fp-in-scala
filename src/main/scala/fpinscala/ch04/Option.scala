@@ -26,7 +26,7 @@ sealed trait Option[+A] {
 }
 
 case class Some[+A](get: A) extends Option[A]
-case object None            extends Option[Nothing]
+case object None extends Option[Nothing]
 
 object Option {
   def mean(xs: Seq[Double]): Option[Double] =

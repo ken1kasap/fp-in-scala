@@ -21,12 +21,12 @@ sealed trait Either[+E, +A] {
 
   def map2[EE >: E, B, C](b: Either[EE, B])(f: (A, B) => C): Either[EE, C] =
     for {
-      a  <- this
+      a <- this
       bb <- b
     } yield f(a, bb)
 }
 
-case class Left[+E](value: E)  extends Either[E, Nothing]
+case class Left[+E](value: E) extends Either[E, Nothing]
 case class Right[+A](value: A) extends Either[Nothing, A]
 
 object Either {
