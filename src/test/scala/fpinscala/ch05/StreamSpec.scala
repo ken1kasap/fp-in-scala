@@ -30,4 +30,22 @@ class StreamSpec extends FlatSpec with Matchers {
 
     xs.drop(3).toList should equal(expected)
   }
+
+  behavior of "takeWhile"
+
+  it should "return new Stream which is made until elements match condition from head." in {
+    val xs = Stream("aaa", "aaa", "bbb", "ccc", "aaa")
+    val condition: String => Boolean = _ == "aaa"
+
+    val expected = List("aaa", "aaa")
+
+    xs.takeWhile(condition).toList should equal(expected)
+  }
+
+  it should "return empty Stream when head did not match the condition." in {
+    val xs = Stream("abc", "aaa", "bbb", "ccc", "aaa")
+    val condition: String => Boolean = _ == "aaa"
+
+    xs.takeWhile(condition).toList should equal(Nil)
+  }
 }
