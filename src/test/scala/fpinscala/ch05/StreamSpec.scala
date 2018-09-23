@@ -48,4 +48,12 @@ class StreamSpec extends FlatSpec with Matchers {
 
     xs.takeWhile(condition).toList should equal(Nil)
   }
+
+  behavior of "exists"
+
+  it should "return true if condition matches." in {
+    val xs = Stream("aaa", "bbb", "ccc", "ddd", "xyz")
+
+    xs.exists(_ === "xyz") should equal(true)
+  }
 }
