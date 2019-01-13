@@ -1,5 +1,6 @@
 package fpinscala.ch05
 
+import Stream._
 import scala.annotation.tailrec
 
 trait Stream[+A] {
@@ -41,8 +42,13 @@ trait Stream[+A] {
 
   // Exercise 5.3
   def takeWhile(p: A => Boolean): Stream[A] = this match {
-    case Cons(h, t) if p(h()) => Stream.cons(h(), t().takeWhile(p))
+    case Cons(h, t) if p(h()) => cons(h(), t().takeWhile(p))
     case _                    => Empty
+  }
+
+  // Exercise 5.5
+  def takeWhile2(p: A => Boolean): Stream[A] = foldRight(empty[A]) { (a, b) =>
+    if (p(a)) cons(a, b) else empty
   }
 
   @tailrec
