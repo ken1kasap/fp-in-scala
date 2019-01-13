@@ -56,4 +56,25 @@ class StreamSpec extends FlatSpec with Matchers {
 
     xs.exists(_ === "xyz") should equal(true)
   }
+
+  behavior of "forAll"
+
+  it should "return true if all the element of the stream satisfy the condition." in {
+    val xs = Stream("aaa", "aaa", "aaa", "aaa", "aaa")
+    val condition: String => Boolean = _ == "aaa"
+
+    xs.forAll(condition) should equal(true)
+  }
+
+  it should "return false some elements does not satisfy the condition and it stops checking when the condition returns false." in {
+    val xs = Stream("aaa", "aaa", "xyz", "aaa", "aaa")
+    var count = 0
+    val condition: String => Boolean = { x =>
+      count = count + 1
+      x == "aaa"
+    }
+
+    xs.forAll(condition) should equal(false)
+    count should equal(3)
+  }
 }
