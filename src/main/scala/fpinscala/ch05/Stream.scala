@@ -65,6 +65,11 @@ trait Stream[+A] {
     case Cons(h, t) => p(h()) && t().forAll(p)
     case _          => false
   }
+
+  // forAll with foldRight
+  def forAll2(p: A => Boolean): Boolean = foldRight(true) { (a, b) =>
+    p(a) && b
+  }
 }
 
 case object Empty extends Stream[Nothing]
