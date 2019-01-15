@@ -2,12 +2,12 @@ lazy val root = (project in file(".")).
   settings(
     name := "fp-in-scala",
     organization := "ken1kasap",
-    scalaVersion := "2.12.4",
+    scalaVersion := "2.12.8",
     version      := "1.0",
     libraryDependencies ++= Seq(
-      "ch.qos.logback"             %  "logback-classic" % "1.1.7",
-      "com.typesafe.scala-logging" %% "scala-logging"   % "3.7.2",
-      "org.scalatest"              %% "scalatest"       % "3.0.1"  % Test
+      "ch.qos.logback"             %  "logback-classic" % "1.2.3",
+      "com.typesafe.scala-logging" %% "scala-logging"   % "3.9.2",
+      "org.scalatest"              %% "scalatest"       % "3.0.5"  % Test
     ),
     scalacOptions ++= Seq(
       // https://tpolecat.github.io/2017/04/25/scalac-flags.html
