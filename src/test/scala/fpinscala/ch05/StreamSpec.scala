@@ -4,6 +4,22 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class StreamSpec extends FlatSpec with Matchers {
 
+  behavior of "headOption"
+
+  it should "return head" in {
+    val stream = Stream("a", "b", "c", "d", "e")
+    val result = stream.headOption
+
+    result should equal(Some("a"))
+  }
+
+  it should "return None when Stream is empty" in {
+    val empty = Stream.empty[String]
+    val result = empty.headOption
+
+    result should equal(None)
+  }
+
   behavior of "toList"
 
   it should "make List from Stream" in {

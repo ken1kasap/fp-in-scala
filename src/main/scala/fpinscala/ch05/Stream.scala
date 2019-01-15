@@ -9,6 +9,11 @@ trait Stream[+A] {
     case Cons(h, _) => Some(h())
   }
 
+  // Exercise 5.6
+  def headOption2: Option[A] = foldRight(Option.empty[A]) { (a, _) =>
+    Some(a)
+  }
+
   // Exercise 5.1
   // Need improvement. Should implement tail recursive.
   def toList: List[A] = this match {
