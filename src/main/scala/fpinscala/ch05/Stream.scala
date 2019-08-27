@@ -68,6 +68,20 @@ trait Stream[+A] {
       case _          => z
     }
 
+  // Exercise 5.7
+  def map[B](f: A => B): Stream[B] = foldRight(empty[B])((h, t) => cons(f(h), t))
+
+  def filter(f: A => Boolean): Stream[A] =
+    foldRight(Stream.empty[A]) { (h, t) =>
+      if (f(h)) cons(h, t)
+      else t
+    }
+  def append[B >: A](s: => Stream[B]): Stream[B] = foldRight(s)((h, t) => cons(h, t))
+
+  def flatMap[B](a: A => Stream[B]): Stream[B] = foldRight(empty[B]) { (h, t) =>
+    a(h) append t
+  }
+
   def existsFoldRight(p: A => Boolean): Boolean = foldRight(false)((a, b) => p(a) || b)
 
   // Exercise 5.4
